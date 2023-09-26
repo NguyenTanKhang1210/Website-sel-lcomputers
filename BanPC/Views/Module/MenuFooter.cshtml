@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MyClass.Models.Menu>
+<div class="col_1_of_4 span_1_of_4">
+    <h4>Thông Tin</h4>
+    <ul>
+        @foreach (var menu in Model)
+        {
+            <li><a href="~/@menu.Link">@menu.Name</a></li>
+        }
+    </ul>
+</div>
+<div class="col_1_of_4 span_1_of_4">
+    <h4>Mạng xã hội</h4>
+    <ul>
+        <li><a href="about.html">Facebook</a></li>
+        <li><a href="contact.html">Twitter</a></li>
+        <li><a href="#">Tiktok</a></li>
+        <li><a href="contact.html">Youtube</a></li>
+        <li><a href="#">Skype</a></li>
+    </ul>
+</div>
+<div class="col_1_of_4 span_1_of_4">
+    <h4>Dịch vụ</h4>
+    <ul>
+        <li><a href="contact.html">Đăng nhập</a></li>
+        <li><a href="index.html">Giỏ hàng</a></li>
+        <li><a href="~/lien-he">Liên hệ</a></li>
+    </ul>
+</div>
+<div class="col_1_of_4 span_1_of_4">
+    <h4>Liên lạc</h4>
+    <ul>
+        <li><span>0345805083</span></li>
+        <li><span>0334504412</span></li>
+    </ul>
+</div>
+

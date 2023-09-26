@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MyClass.Models.ProductInfo>
+@{
+    var category = ViewBag.Category;
+}
+@if (Model.Count() != 0)
+{
+    <div class="content_top" style="background-color: antiquewhite;">
+        <div class="heading" style="font-weight: bold;">
+            <h3>@category.Name</h3>
+        </div>
+        <div class="see">
+            <p><a href="~/@category.Slug"style="font-weight: bold;">Tất cả sản phẩm</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @foreach (var product in Model)
+        {
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="~/@product.Slug"><img src="~/Public/images/products/@product.Image" alt="" /></a>
+                <h2 class="card-title text-center">
+                    <a href="~/@product.Slug"style="font-weight: bold;">@product.Name</a>
+                </h2>
+                <div class="price-details">
+                    <div class="price-number">
+                        <strong class="text-cussess"style="color: black;font-size: 18px;font-weight: bold;">@string.Format("{0:0,0}", product.Pricesale) VNĐ</strong>
+                        <del><span class="text-danger"style="font-size: 18px;font-weight: bold;">@string.Format("{0:0,0}", product.Pricebuy) VNĐ</span></del> 
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="@Url.Action("CartAdd", "Cart", new {productid = product.Id})" style="font-weight: bold;">Đặt hàng</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+
+}
+

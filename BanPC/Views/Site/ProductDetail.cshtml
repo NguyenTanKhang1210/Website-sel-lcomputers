@@ -1,0 +1,61 @@
+﻿@model MyClass.Models.Product
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+
+
+
+<section class="maincontent clearfix">
+    <div class="container">
+        <div class="row product-info">
+            <div class="col-md-6 my-4">
+                <img src="~/Public/images/products/@Model.Image" alt="" style="width: 500px; height: 500px; "/>
+            </div>
+            <div class="col-md-6 my-4">
+                <div class="desc">
+                    <h2 style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; ">@Model.Name </h2>
+                    <div class="price">
+                        <br /> <a style="font-weight: bold;">Giá khuyến mãi: <strong class="text-cussess" style="color: black;font-size: 18px;font-weight: bold;">@string.Format("{0:0,0}", Model.Pricesale) VNĐ</strong></a>  <br />
+                         <a style="font-weight: bold;">Giá gốc: <del><span class="text-danger" style="font-size: 18px;font-weight: bold; ">@string.Format("{0:0,0}", Model.Pricebuy) VNĐ</span></del></a>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="@Url.Action("CartAdd", "Cart", new {productid = Model.Id})">Đặt hàng</a></h4>
+                    </div>    
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class="product_desc">
+            <div id="horizontalTab">
+                <ul class="resp-tabs-list">
+                    <li style="color: black;font-weight: bold;">Chi tiết sản phẩm</li>
+                </ul>
+                <div class="resp-tabs-container">
+                    <div class="product-desc">
+                        <p style="color: black;">@Html.Raw(Model.MetaDesc)</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="product_desc">
+            <div id="horizontalTab">
+                <ul class="resp-tabs-list">
+                    <li style="color: black;font-weight: bold;">Cấu hình</li>
+                </ul>
+                <div class="resp-tabs-container">
+                    <div class="product-desc">
+                        <p style="color: black;">@Html.Raw(Model.Detail)</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>

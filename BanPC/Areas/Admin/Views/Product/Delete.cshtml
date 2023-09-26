@@ -1,0 +1,117 @@
+﻿@model MyClass.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="content-wrapper">
+
+    <!-- Main content -->
+    <section class="content my-3">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Xác nhận xóa danh mục sản phẩm</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="@Url.Action("Edit","Product" , new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Cập nhật</a>
+                            <a href="@Url.Action("Index","Product")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Xóa</button>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px">Tên trường</th>
+                        <th>Noi Dung</th>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td> Slug</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Slug)</td>
+                    </tr>
+                    <tr>
+                        <td> Mã danh mục</td>
+                        <td> @Html.DisplayFor(modelItem => Model.CatId)</td>
+                    </tr>
+                    <tr>
+                        <td> Mã thương hiệu</td>
+                        <td> @Html.DisplayFor(modelItem => Model.BrandId)</td>
+                    </tr>
+                    <tr>
+                        <td> Hình ảnh</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Image)</td>
+                    </tr>
+                    <tr>
+                        <td> Giá gốc</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Pricebuy)</td>
+                    </tr>
+                    <tr>
+                        <td> Giá khuyến mãi</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Pricesale)</td>
+                    </tr>
+                    <tr>
+                        <td> Chi tiết</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Detail)</td>
+                    </tr>
+                    <tr>
+                        <td> Số lượng</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Numbers)</td>
+                    </tr>
+                    <tr>
+                        <td> Mô tả</td>
+                        <td> @Html.DisplayFor(modelItem => Model.MetaDesc)</td>
+                    </tr>
+                    <tr>
+                        <td> Từ khóa</td>
+                        <td> @Html.DisplayFor(modelItem => Model.MetaKey)</td>
+                    </tr>
+                    <tr>
+                        <td>Người tạo</td>
+                        <td> @Html.DisplayFor(modelItem => Model.CreatedBy)</td>
+                    </tr>
+                    <tr>
+                        <td> Ngày tạo</td>
+                        <td> @Html.DisplayFor(modelItem => Model.CreatedAt)</td>
+                    </tr>
+                    <tr>
+                        <td> Người cập nhật</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UpdatedBy)</td>
+                    </tr>
+                    <tr>
+                        <td> Ngày cập nhật</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UpdatedAt)</td>
+                    </tr>
+                    <tr>
+                        <td> Trạng thái</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Status)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+

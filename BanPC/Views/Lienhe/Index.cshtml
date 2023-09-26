@@ -1,0 +1,60 @@
+﻿@model MyClass.Models.Contact
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@section footer {
+    <script src="~/Public/js/contactController.js"></script>
+}
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 style="font-weight: bold;">Thông tin liên hệ</h2>
+                <p>Công Ty 1 thành viên</p>
+                <p>Nguyễn Tấn Khang</p>
+                <p>Phù Mỹ Bình Định</p>
+                <br />
+                <h2 style="font-weight: bold;">Liên hệ</h2>
+
+                @if (ViewBag.SuccessMessage != null)
+                {
+                    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                }
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label>Tên</label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ghi chú</label>
+                        @Html.TextAreaFor(m => m.Title, new { @class = "form-control" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                }
+            </div>
+            <div class="col-md-6" style="font-weight: bold;">
+                <h2>Bản đồ</h2>
+                <div class="map" id="mapCanvas"></div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7904358460423!2d106.72164707481885!3d10.827343358252943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175262a13538f09%3A0x7f8de7893d4db958!2zOCDEkMaw4budbmcgc-G7kSAyMSwgSGnhu4dwIELDrG5oIENow6FuaCwgVGjhu6cgxJDhu6ljLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1692945911380!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+

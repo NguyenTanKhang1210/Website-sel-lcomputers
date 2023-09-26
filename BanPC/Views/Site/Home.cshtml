@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MyClass.Models.Category>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+@Html.Action("Slidershow", "Module")
+
+
+<section class="maincontent clearfix">
+    <div class="container">
+        <div class="main">
+            <div class="content">
+                @foreach (var category in Model)
+                {
+                    @Html.Action("HomeProduct", "Site", new { @id = category.Id })
+
+                }
+                @Html.Action("Product_sale", "Site")
+            </div>
+        </div>
+    </div>
+        
+        </section>

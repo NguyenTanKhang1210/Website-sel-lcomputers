@@ -1,0 +1,29 @@
+﻿@model MyClass.Models.Post
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@using BanPC.Library
+<section class="maincontent clearfix">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12 col-lg-12">
+                <h1 class="title-post">@Model.Title</h1>
+                <img src="~/Public/images/posts/@Model.Img" alt=""  />
+                <p>@Model.Detail</p>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="title-post">Bài viết mới</h3>
+                <ul>
+                    @foreach (var post in ViewBag.ListOther)
+                    {
+                        <li><a href="~/@post.Slug">@post.Title</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>

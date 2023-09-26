@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MyClass.Models.Slider>
+<section class="slidershow clearfix">
+    <div class="container py-2">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.Action("ListCategory", "Module")
+            </div>
+            <div class="col-md-10">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+
+                        @{ int index = 0;}
+                        @foreach (var slider in Model)
+                        {
+                            if (index == 0)
+                            {
+                                <div class="carousel-item active" data-bs-interval="3000">
+                                    <img src="~/Public/images/slider/@slider.Img" class="d-block w-100" alt="@slider.Name">
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="carousel-item active" data-bs-interval="3000">
+                                    <img src="~/Public/images/slider/@slider.Img" class="d-block w-100" alt="@slider.Name">
+                                </div>
+                            }
+                            index++;
+                        }
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

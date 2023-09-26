@@ -1,0 +1,57 @@
+﻿@using MyClass.DAO
+@using MyClass.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+
+    string key = Request.QueryString["key"];
+    List<Product> result = new List<Product>();
+}
+<section class="maincontent clearfix">
+    <div class="container my-2">
+        <h2 style="font-weight: bold; font-size:20px">Tìm kiếm: @key</h2>
+        @{
+            if (string.IsNullOrEmpty(key))
+            {
+                <h3 style="font-weight: bold; font-size:15px">Vui lòng nhập từ khóa</h3>
+            }
+            else
+            {
+                if (key == "" || key.Length < 3)
+                {
+                    <h3 style="font-weight: bold; font-size:15px">Vui lòng nhập từ khóa</h3>
+                }
+                else
+                {
+                    result = new ProductDAO().SearchByKey(key);
+                    foreach (var item in result)
+                    {
+                        <div class="grid_1_of_4 images_1_of_4">
+                            <a href="~/@item.Slug"><img src="~/Public/images/products/@item.Image" alt="" /></a>
+                            <h2 class="card-title text-center">
+                                <a href="~/@item.Slug" style="font-weight: bold; color: black;text-decoration: none;">@item.Name</a>
+                            </h2>
+                            <div class="price-details">
+                                <div class="price-number">
+                                    <strong class="text-cussess" style="color: green;font-size: 18px;font-weight: bold;">@string.Format("{0:0,0}", item.Pricesale) VNĐ</strong>
+                                    <del><span class="text-danger" style="color: green;font-size: 18px;font-weight: bold;">@string.Format("{0:0,0}", item.Pricebuy) VNĐ</span></del>
+                                </div>
+                                <div class="add-cart">
+                                    <h4><a href="@Url.Action("CartAdd", "Cart", new {productid = item.Id})" style="font-weight: bold;">Đặt hàng</a></h4>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+    </div>
+</section>

@@ -1,0 +1,19 @@
+﻿.bg-mainmenu {
+    background-color: red;
+}
+
+.bg-footer {
+    background-color: red;
+}
+.card-header {
+    background-color: red;
+    color: azure;
+}
+.title-post{
+    font-size: 30px;
+}
+.images_3_of_1
+{
+    max-width:100px;
+}
+

@@ -1,0 +1,17 @@
+﻿@model MyClass.Models.Post
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="maincontent clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <h1 class="title-post">@Model.Title</h1>
+                <img src="~/Public/images/posts/@Model.Img" alt="" style="max-width:300px;" />
+                <p>@Model.Detail</p>
+            </div>
+        </div>
+    </div>
+</section>

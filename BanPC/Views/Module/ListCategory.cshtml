@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyClass.Models.Category>
+    <style>
+        a {
+            color: black;
+            text-decoration: none; /* Loại bỏ gạch chân */
+        }
+    </style>
+<div class="listcategory mb-4" style="font-weight: bold;">
+    <div class="card" style="width: 100%;">
+        <div class="card-header bd-green-500">
+            Danh mục sản phẩm
+        </div>
+        <ul class="list-group list-group-flush">
+            @foreach (var category in Model)
+            {
+                <li class="list-group-item">
+                    <a href="~/@category.Slug">@category.Name</a>
+                </li>
+            }
+
+        </ul>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <a href="~/tat-ca-san-pham">Tất cả sản phẩm</a>
+            </li>        
+        </ul>
+
+    </div>
+</div>
+

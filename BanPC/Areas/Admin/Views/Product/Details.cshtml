@@ -1,0 +1,107 @@
+﻿@model MyClass.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<!<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Chi Tiết Sản Phẩm</strong>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="@Url.Action("Edit","Product", new { id = Model.Id })" class="btn btn-sm btn-info"><i class="fa fa-edit" aria-hidden="true"></i>Cập Nhật</a>
+
+                        <a href="@Url.Action("Index","Product")" class="btn btn-sm btn-info"><i class="fa fa-arrow-left" aria-hidden="true"></i>Về Danh Sách </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body my-3">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px">Tên trường</th>
+                        <th>Noi Dung</th>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td> Slug</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Slug)</td>
+                    </tr>
+                    <tr>
+                        <td> Mã danh mục</td>
+                        <td> @Html.DisplayFor(modelItem => Model.CatId)</td>
+                    </tr>
+                    <tr>
+                        <td> Mã thương hiệu</td>
+                        <td> @Html.DisplayFor(modelItem => Model.BrandId)</td>
+                    </tr>
+                    <tr>
+                        <td> Hình ảnh</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Image)</td>
+                    </tr>
+                    <tr>
+                        <td> Giá gốc</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Pricebuy)</td>
+                    </tr>
+                    <tr>
+                        <td> Giá khuyến mãi</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Pricesale)</td>
+                    </tr>
+                    <tr>
+                        <td> Chi tiết</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Detail)</td>
+                    </tr>
+                    <tr>
+                        <td> Số lượng</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Numbers)</td>
+                    </tr>
+                    <tr>
+                        <td> Mô tả</td>
+                        <td> @Html.DisplayFor(modelItem => Model.MetaDesc)</td>
+                    </tr>
+                    <tr>
+                        <td> Từ khóa</td>
+                        <td> @Html.DisplayFor(modelItem => Model.MetaKey)</td>
+                    </tr>
+                    <tr>
+                        <td>Người tạo</td>
+                        <td> @Html.DisplayFor(modelItem => Model.CreatedBy)</td>
+                    </tr>
+                    <tr>
+                        <td> Ngày tạo</td>
+                        <td> @Html.DisplayFor(modelItem => Model.CreatedAt)</td>
+                    </tr>
+                    <tr>
+                        <td> Người cập nhật</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UpdatedBy)</td>
+                    </tr>
+                    <tr>
+                        <td> Ngày cập nhật</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UpdatedAt)</td>
+                    </tr>
+                    <tr>
+                        <td> Trạng thái</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Status)</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

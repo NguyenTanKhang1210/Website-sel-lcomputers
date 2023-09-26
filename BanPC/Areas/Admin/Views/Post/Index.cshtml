@@ -1,0 +1,133 @@
+﻿@model IEnumerable<MyClass.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header {
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+@section footer {
+    <script src="~/Public/js/jquery.dataTables.min.js"></script>
+    <script>let table = new DataTable('#myTable');</script>
+}
+<div class="content-wrapper">
+
+    <!-- Main content -->
+    <section class="content my-3">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Tất cả bài viết</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <a href="@Url.Action("Create","Post")" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Thêm</a>
+                        <a href="@Url.Action("Trash","Post")" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Thùng rác</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @Html.Partial("Message")
+                <table class="table table-bordered table-striped" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mã chủ đề
+                            </th>
+                            <th>
+                                Tiêu đề
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Slug)
+                            </th>
+                            <th>
+                               Chi tiết
+                            </th>
+                            <th>
+                                Hình ảnh
+                            </th>
+                            <th>
+                               Kiểu bài viết
+                            </th>
+
+
+                            <th>
+                                Ngày tạo
+                            </th>
+
+                            <th class="text-center" style="width:180px;">Chức năng</th>
+                            <th class="text-center" style="width:20px;">
+                                ID
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TopicId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Slug)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Img)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PostType)
+                                </td>
+                                
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                                </td>
+                               
+                                
+
+                                <td class="text-center">
+                                    @if (item.Status == 1)
+                                    {
+                                        <a href="@Url.Action("Status","Post" , new { id = item.Id })" class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Status","Post" , new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i></a>
+                                    }
+                                    <a href="@Url.Action("Details","Post" , new { id = item.Id })" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                    <a href="@Url.Action("Edit","Post" , new { id = item.Id })" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                    <a href="@Url.Action("DelTrash","Post" , new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                                <td>
+                                    @item.Id
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
+

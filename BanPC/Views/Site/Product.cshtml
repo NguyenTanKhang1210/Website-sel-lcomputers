@@ -1,0 +1,95 @@
+﻿@model PagedList.IPagedList<MyClass.Models.ProductInfo>
+
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@using PagedList.Mvc
+<section class="maincontent clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 my-4">
+                @Html.Action("ListCategory", "Module")
+                @Html.Action("PostLastNews", "Module")
+            </div>
+            <div class="col-md-9">
+                <div class="main">
+                    <div class="content">
+                        <div class="content_top">
+                            <div class="heading"style="font-weight: bold;">
+                                <h3>Tất cả sản phẩm</h3>
+                            </div>
+
+                            <div class="clear"></div>
+                        </div>
+                        @foreach (var product in Model)
+                        {
+                            <div class="grid_1_of_4 images_1_of_4">
+                                <a href="~/@product.Slug"><img src="~/Public/images/products/@product.Image" alt="" /></a>
+                                <h2 class="card-title text-center">
+                                    <a href="~/@product.Slug"style="font-weight: bold;">@product.Name</a>
+                                </h2>
+                                <div class="price-details">
+                                    <div class="price-number">
+                                        <strong class="text-cussess"style="color: black;font-size: 18px;font-weight: bold;" >@string.Format("{0:0,0}", product.Pricesale) VNĐ</strong>
+                                        <del><span class="text-danger"style="color: green;font-size: 18px;font-weight: bold;" >@string.Format("{0:0,0}", product.Pricebuy) VNĐ</span></del>
+                                    </div>
+                                    <div class="add-cart">
+                                        <h4><a href="@Url.Action("CartAdd", "Cart", new {productid = product.Id})"style="font-weight: bold;">Đặt hàng</a></h4>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                            </div>
+
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <style>
+                    .pagination {
+                        display: flex;
+                        list-style: none;
+                        padding: 0;
+                        justify-content: flex-end; /* Canh lề phải */
+                        font-weight: bold; /* Đặt nút trang hiện tại là đậm */
+                    }
+
+                        .pagination a {
+                            color: black;
+                            float: left;
+                            padding: 8px 16px;
+                            text-decoration: none;
+                            transition: background-color .3s;
+                            border: 1px solid #ddd;
+                            margin: 0 4px;
+                        }
+
+                            .pagination a.active {
+                                background-color: #4CAF50;
+                                color: white;
+                                border: 1px solid #4CAF50;
+                            }
+
+                            .pagination a:hover:not(.active) {
+                                background-color: #ddd;
+                            }
+
+
+                </style>
+                <div class="col-12">
+                    <nav aria-label="pagination">
+                        @Html.PagedListPager(Model, page => Url.Action("Product", "Site", new { page }))
+                    </nav>
+                   
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+

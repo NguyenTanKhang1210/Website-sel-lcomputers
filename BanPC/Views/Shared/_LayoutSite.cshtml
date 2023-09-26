@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/LayoutSite.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/Public/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Public/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/Public/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="~/Public/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Public/js/easing.js"></script>
+    <script type="text/javascript" src="~/Public/js/startstop-slider.js"></script>
+    <script src="~/Public/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/Public/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Public/css/global.css">
+    <script src="~/Public/js/slides.min.jquery.js"></script>
+    @RenderSection("header", required: false)
+</head>
+<body >
+    <section class="header clearfix py-2 ">
+        <div class=" container py-2">
+            <div class="row">
+                <div class="col-md-2 logo">
+                    <img src=" ~/Public/images/homes/logo.png" alt="Logo" class="img-fluid" />
+                </div>
+                <div class="col-md-4">
+                   
+                    <form class="d-flex" role="search" method="get" action="~/tim-kiem">
+                        <input class="form-control me-2" name="key" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Tìmkiếm</button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <ul class="nav justify-content-end py-0">
+                        @if (Session["UserCustomer"].Equals(""))
+                        {
+                            <li class="nav-item" style="font-weight: bold;">
+                                <a class="nav-link py-0 text-black" href="~/dang-nhap" ><i class="fas fa-user"></i> Đăng Nhập</a>
+                            </li>
+                            <li class="nav-item"style="font-weight: bold;">
+                                <a class="nav-link py-0 text-black" href="~/dang-ky"><i class="fas fa-user"></i> Đăng Ký</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"style="font-weight: bold;">
+                                <a class="nav-link py-0 text-black" href="~/dang-xuat"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a>
+                            </li>
+                        }
+                        
+
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    @{
+                        int soluong = 0;
+                        if (!System.Web.HttpContext.Current.Session["MyCart"].Equals(""))
+                        {
+                            List<CartItem> listcart = (List<CartItem>)System.Web.HttpContext.Current.Session["MyCart"];
+                            soluong = listcart.Count();
+                        }
+                    }
+                    <a href="~/gio-hang" class="btn btn-success position-relative">
+                        <i class="fas fa-shopping-bag"> Giỏ Hàng</i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            @soluong
+                            <span class="visually-hidden">unread mess</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mainmenu clearfix bg-mainmenu">
+        <div class=" container">
+            @Html.Action("ManiMenu", "Module")
+        </div>
+    </section>
+    <section class="maincontent clearfix">
+        @RenderBody()
+    </section>
+    <section class="footer clearfix bg-footer py-4">
+        <div class="container">
+            <div class="footer clearfix bg-footer py-2">
+                <div class="wrap">
+                    <div class="section group">
+                        @Html.Action("MenuFooter", "Module")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright clearfix bg-footer py-2">
+        <div class="container text-center border-top border-light">
+            Bản quyền thuộc về Nguyễn Tấn Khang
+        </div>
+    </section>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    @RenderSection("footer", required: false)
+</body>
+</html>

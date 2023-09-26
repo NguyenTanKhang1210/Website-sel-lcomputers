@@ -1,0 +1,148 @@
+﻿@model MyClass.Models.Menu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+
+    <!-- Main content -->
+    <section class="content my-3">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Xác nhận xóa Menu</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <a href="@Url.Action("Edit","Menu" , new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Cập nhật</a>
+                            <a href="@Url.Action("Index","Menu")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Xóa</button>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px;">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Name)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Link)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Link)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.TableId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.TableId)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.TypeMenu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.TypeMenu)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Position)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ParentId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ParentId)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Orders)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Orders)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedBy)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.CreatedAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedAt)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.UpdatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.UpdatedBy)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.UpdatedAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.UpdatedAt)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Status)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
